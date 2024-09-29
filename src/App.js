@@ -1,5 +1,5 @@
 import './App.css';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 import { emotionsPrompts } from './prompts/emotions';
 import { positivePrompts } from './prompts/positive';
@@ -7,11 +7,11 @@ import { gratitudePrompts } from './prompts/gratitude';
 import { mindfulnessPrompts } from './prompts/mindfulness';
 
 const allPrompts = {
+  prompt: [...positivePrompts, ...gratitudePrompts, ...mindfulnessPrompts, ...emotionsPrompts],
   positive: positivePrompts,
   gratitude: gratitudePrompts,
   mindfulness: mindfulnessPrompts,
-  emotional: emotionsPrompts,
-  prompt: [...positivePrompts, ...gratitudePrompts, ...mindfulnessPrompts, ...emotionsPrompts]
+  emotional: emotionsPrompts
 }
 
 function seededRandom(seed) {
@@ -28,7 +28,8 @@ function stringToNumber(str) {
 }
 
 function App() {
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  
   const currentTopic = useMemo(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const topic = urlParams.get('topic') ?? 'prompt';
@@ -46,9 +47,27 @@ function App() {
 
   const currentDate = useMemo(() => new Date().toLocaleDateString(), []);
 
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+  };
+
+  console.log(menuOpen)
 
   return (
     <>
+      <header className="app-bar">
+        <button className="hamburger-menu" onClick={toggleMenu}>
+          ☰
+        </button>
+        <h1 className="app-bar-title">THERAPROMPTS</h1>
+        <nav className={`nav-bar ${menuOpen ? 'open' : ''}`}>
+          {Object.keys(allPrompts).map((topic, index) => (
+            <a key={index} href={`?topic=${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>
+              {topic === 'prompt' ? 'all' : topic} prompts
+            </a>
+          ))}
+        </nav>
+      </header>
       <div className="container">
         <div className='prompt-container'>
           <article className="prompt">
@@ -59,18 +78,6 @@ function App() {
           <div className="scroll-message">
             Scroll to see more prompts
           </div>
-        </div>
-        <div>
-          <div className='all-prompts-header'>
-            <span className='nav-link'>Topics</span>
-          </div>
-          <nav className="nav-bar">
-            {Object.keys(allPrompts).map((topic, index) => topic !== currentTopic && (
-              <a key={index} href={`?topic=${topic.replace(/\s+/g, '-').toLowerCase()}`} className='nav-link'>
-                {topic === 'prompt' ? 'all' : topic} prompts
-              </a>
-            ))}
-          </nav>
         </div>
         <div className='all-prompts-header'>
           <h2 className="subtitle">All {currentTopic !== 'prompt' && <span>{currentTopic}</span>} prompts</h2>
