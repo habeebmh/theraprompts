@@ -1,5 +1,5 @@
 export const positivePrompts = [
-  { text: "What are three things you are grateful for today?", index: 1, topic: "positive" },
+  { text: "What are three things you appreciate about your intelligence?", index: 1, topic: "gratitude" },
   { text: "Describe a positive experience you had recently.", index: 2, topic: "positive" },
   { text: "What is something you are looking forward to?", index: 3, topic: "positive" },
   { text: "Write about a time you overcame a challenge.", index: 4, topic: "positive" },
