@@ -21,9 +21,9 @@ function App() {
     <>
       <div className="container">
         <div className='prompt-container'>
-          <h2 className="subtitle">Prompt #{selectedItem.index} </h2>
+          <h2 className="subtitle">{currentDate}</h2>
           <h1 className="title">{selectedItem.text}</h1>
-          <h3 className="small-subtitle">{currentDate}</h3>
+          <h3 className="small-subtitle">Positive prompt #{selectedItem.index} </h3>
           <div className="scroll-message">
             Scroll down to see all prompts
           </div>
