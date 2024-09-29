@@ -7,7 +7,68 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.prompt-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 3em;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  margin: 0;
+  color: #777;
+}
+
+.small-subtitle {
+  font-size: 1em;
+  margin: 0;
+  color: #aaa; /* Even lighter color for the small subtitle */
+}
+
+.prompt-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.prompt-item {
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.prompt-index {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.prompt-text {
+  font-size: 1em;
+}
+
+.scroll-message {
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
 }
