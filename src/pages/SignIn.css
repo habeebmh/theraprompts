@@ -1,0 +1,45 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.sign-in-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-in-container h2 {
+  text-align: center;
+}
+
+.google-sign-in-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 20px;
+}
+
+.google-sign-in-button:hover {
+  background-color: #357ae8;
+}
+
+.error {
+  color: red;
+  margin-top: 15px;
+  text-align: center;
+}

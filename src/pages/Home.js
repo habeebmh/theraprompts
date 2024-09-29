@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 
 import { dateSeed, seededRandomItem } from '../utils/random';
@@ -12,9 +12,7 @@ function stringToNumber(str) {
 }
 
 function Home() {
-  const { topic = '' } = useParams();
-  const [menuOpen, setMenuOpen] = useState(false);
-  
+  const { topic = '' } = useParams();  
   const currentTopic = useMemo(() => {
     const decodedTopic = topic.replace(/-/g, ' ')
     return topics[decodedTopic] ? decodedTopic : Object.keys(topics)[0];
@@ -29,25 +27,8 @@ function Home() {
 
   const currentDate = useMemo(() => new Date().toLocaleDateString(), []);
 
-  const toggleMenu = () => {
-    setMenuOpen(prev => !prev);
-  };
-
   return (
     <>
-      <header className="app-bar">
-        <button className="hamburger-menu" onClick={toggleMenu}>
-          ☰
-        </button>
-        <h1 className="app-bar-title">THERAPROMPTS</h1>
-        <nav className={`nav-bar ${menuOpen ? 'open' : ''}`}>
-          {Object.keys(topics).map((topic, index) => (
-            <a key={index} href={`/${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>
-              {topic}
-            </a>
-          ))}
-        </nav>
-      </header>
       <div className="container">
         <div className='prompt-container'>
           <article className="prompt">
