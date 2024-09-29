@@ -11,7 +11,7 @@ const allPrompts = {
   positive: positivePrompts,
   gratitude: gratitudePrompts,
   mindfulness: mindfulnessPrompts,
-  emotional: emotionsPrompts
+  emotions: emotionsPrompts
 }
 
 function seededRandom(seed) {
