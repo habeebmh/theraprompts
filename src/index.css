@@ -15,6 +15,30 @@ body {
   flex-flow: column nowrap;
 }
 
+.nav-bar {
+  display: absolute;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  top: 1em;
+  flex-flow: row wrap;
+}
+
+.nav-link {
+  color: #777;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.nav-link-bold {
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
 .prompt-container {
   min-height: 100vh;
   display: flex;
@@ -26,7 +50,7 @@ body {
 
 .title {
   font-size: 3em;
-  margin: 0;
+  margin: 0 0 0.25em;
 }
 
 .subtitle {
@@ -73,4 +97,13 @@ body {
   text-align: center;
   font-size: 0.9em;
   color: #888;
+}
+
+.all-prompts-header {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text */
+  width: 100%; /* Ensure it takes full width */
+  margin: 2em 0 0; /* Add some margin for spacing */
 }
