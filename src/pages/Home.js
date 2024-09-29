@@ -5,19 +5,20 @@ import { dateSeed, seededRandomItem } from '../utils/random';
 
 import './Home.css';
 import { topics } from '../prompts';
+import { useParams } from 'react-router-dom';
 
 function stringToNumber(str) {
   return [...btoa(str)].reduce((acc, char) => acc + char.charCodeAt(0), 0);
 }
 
 function Home() {
+  const { topic = '' } = useParams();
   const [menuOpen, setMenuOpen] = useState(false);
   
   const currentTopic = useMemo(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const topic = urlParams.get('topic') ?? Object.keys(topics)[0];
-    return topic.replace(/-/g, ' ');
-  }, []);
+    const decodedTopic = topic.replace(/-/g, ' ')
+    return topics[decodedTopic] ? decodedTopic : Object.keys(topics)[0];
+  }, [topic]);
 
   const prompts = useMemo(() => topics[currentTopic], [currentTopic]);
 
@@ -41,7 +42,7 @@ function Home() {
         <h1 className="app-bar-title">THERAPROMPTS</h1>
         <nav className={`nav-bar ${menuOpen ? 'open' : ''}`}>
           {Object.keys(topics).map((topic, index) => (
-            <a key={index} href={`?topic=${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>
+            <a key={index} href={`/${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>
               {topic}
             </a>
           ))}
