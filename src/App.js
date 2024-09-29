@@ -84,6 +84,9 @@ function App() {
           ))}
         </div>
       </div>
+      <footer className="footer">
+        Dedicated to my best friend ❤️
+      </footer>
     </>
   );
 }
