@@ -62,7 +62,7 @@ function App() {
         </div>
         <div>
           <div className='all-prompts-header'>
-            <span className='nav-link'>More prompts:</span>
+            <span className='nav-link'>Topics</span>
           </div>
           <nav className="nav-bar">
             {Object.keys(allPrompts).map((topic, index) => topic !== currentTopic && (

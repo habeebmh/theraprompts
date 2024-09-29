@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5dc;
 }
 
 .container {
@@ -74,7 +75,7 @@ body {
 }
 
 .prompt-item {
-  background: #f0f0f0;
+  background: #e5e5cc; /* #f0f0f0; */
   padding: 10px;
   border-radius: 5px;
   text-align: left;
@@ -92,7 +93,6 @@ body {
 .scroll-message {
   position: absolute;
   bottom: 16px;
-  background: #fff;
   padding: 10px;
   text-align: center;
   font-size: 0.9em;
