@@ -62,13 +62,8 @@ function App() {
     setMenuOpen(prev => !prev);
   };
   const currentTopic = useMemo(() => {
-    if (window.location.pathname === '/' || Object.keys(topics).some(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase()))) {
-      return Object.keys(topics).find(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase())) || Object.keys(topics)[0];
-    }
-
-    return '';
+    return Object.keys(topics).find(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase())) ?? '';
   }, []);
-
 
   return (
     <>
