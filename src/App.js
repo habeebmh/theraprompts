@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     element: <Account />,
   },
   {
+    path: "/study",
+    element: <Account />,
+  },
+  {
     path: "/account/entry/:id",
     element: <EntryDetails />,
   },
@@ -73,6 +77,9 @@ function App() {
                 {topic}
               </a>
             ))}
+            <a href='/study' className='nav-link end'>
+              Study
+            </a>
             {/* <SignInButton /> */}
           </nav>
         </header>

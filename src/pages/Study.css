@@ -1,0 +1,36 @@
+/* Study.css */
+.study-container {
+  max-width: 800px;
+  margin: 96px auto 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.study-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.study-container p {
+  margin-bottom: 20px;
+}
+
+.study-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.study-container li {
+  margin-bottom: 10px;
+}
+
+.study-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.study-container a:hover {
+  text-decoration: underline;
+}
