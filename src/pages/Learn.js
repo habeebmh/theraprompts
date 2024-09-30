@@ -1,5 +1,5 @@
 import React from 'react';
-import './Study.css';
+import './Learn.css';
 
 function Study() {
   return (
@@ -17,10 +17,11 @@ function Study() {
       </ul>
       <h3>Scientific Sources</h3>
       <ul>
-        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3010965/" target="_blank" rel="noopener noreferrer">The Effects of Writing About Stressful Experiences on Symptom Reduction in Patients with Asthma or Rheumatoid Arthritis</a></li>
-        <li><a href="https://journals.sagepub.com/doi/abs/10.1177/0956797612457392" target="_blank" rel="noopener noreferrer">Expressive Writing and Its Links to Mental and Physical Health</a></li>
-        <li><a href="https://www.tandfonline.com/doi/abs/10.1080/07421656.2018.1447991" target="_blank" rel="noopener noreferrer">The Role of Journaling in Mental Health Recovery</a></li>
-        <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0191886917300321" target="_blank" rel="noopener noreferrer">The Impact of Journaling on Mental Health: A Meta-Analysis</a></li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8935176/" target="_blank" rel="noopener noreferrer">The Effects of Journaling on Mental Health</a></li>
+        <li><a href="https://academic.oup.com/edited-volume/28312/chapter/215027390" target="_blank" rel="noopener noreferrer">Expressive Writing and Its Links to Mental and Physical Health</a></li>
+        <li><a href="https://www.va.gov/WHOLEHEALTHLIBRARY/tools/therapeutic-journaling.asp#:~:text=Therapeutic%20journaling%20can%20be%20done,stressful%2C%20or%20traumatic%20life%20events." target="_blank" rel="noopener noreferrer">Journaling as a Therapeutic Tool for Mental Health</a></li>
+        <li><a href="https://www.urmc.rochester.edu/encyclopedia/content.aspx?ContentTypeID=1&ContentID=4552" target="_blank" rel="noopener noreferrer">The Role of Journaling in Mental Health Recovery</a></li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505408/" target="_blank" rel="noopener noreferrer">Writing Therapy: How Journaling Can Improve Mental Health</a></li>
       </ul>
     </div>
   );

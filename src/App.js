@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Account from './pages/Account';
 import SignIn from './pages/SignIn';
 import EntryDetails from './pages/EntryDetails';
-import Study from './pages/Study';
+import Learn from './pages/Learn';
 
 import { topics } from './prompts';
 import AuthProvider from './utils/providers/AuthProvider';
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
     element: <Account />,
   },
   {
-    path: "/study",
-    element: <Study />,
+    path: "/learn",
+    element: <Learn />,
   },
   {
     path: "/account/entry/:id",
@@ -56,11 +56,11 @@ function App() {
     setMenuOpen(prev => !prev);
   };
   const currentTopic = useMemo(() => {
-    if (window.location.pathname.includes('sign-in')) {
-      return '';
+    if (window.location.pathname === '/' || Object.keys(topics).some(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase()))) {
+      return Object.keys(topics).find(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase())) || Object.keys(topics)[0];
     }
 
-    return Object.keys(topics).find(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase())) || Object.keys(topics)[0];
+    return '';
   }, []);
 
 
@@ -78,8 +78,8 @@ function App() {
                 {topic}
               </a>
             ))}
-            <a href='/study' className='nav-link end'>
-              Study
+            <a href='/learn' className='nav-link end'>
+              learn
             </a>
             {/* <SignInButton /> */}
           </nav>
