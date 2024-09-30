@@ -10,6 +10,7 @@
   flex-flow: row nowrap;
   padding: 1em;
   background-color: #e5e5cc;
+  align-items: center;
 }
 
 .app-bar-title {
@@ -24,6 +25,7 @@
   border: none;
   cursor: pointer;
   display: none;
+  color: #777;
 }
 
 .nav-bar {
@@ -31,7 +33,6 @@
   align-items: center;
   display: flex;
   gap: 20px;
-  justify-content: center;
   top: 1em;
   flex-flow: row nowrap;
 }
@@ -83,6 +84,7 @@
     left: 0;
     z-index: 999;
     background-color: #e5e5cc;
+    padding: 1em 0;
   }
 
   .nav-bar.open {
@@ -90,7 +92,6 @@
   }
 
   .nav-link {
-    padding: 10px 0;
     width: 100%;
     text-align: center;
   }
