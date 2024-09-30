@@ -1,11 +1,13 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 
-import Home from './pages/Home';
 import Account from './pages/Account';
 import SignIn from './pages/SignIn';
 import EntryDetails from './pages/EntryDetails';
 import Learn from './pages/Learn';
+import CreateEntry from './pages/CreateEntry';
+import Home from './pages/Home';
+import Prompt from './pages/Prompts';
 
 import { topics } from './prompts';
 import AuthProvider from './utils/providers/AuthProvider';
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
     element: <SignIn />,
   },
   {
+    path: "/create-entry",
+    element: <CreateEntry />,
+  },
+  {
     path: "/account",
     element: <Account />,
   },
@@ -36,7 +42,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/:topic",
-    element: <Home />,
+    element: <Prompt />,
   },
 ]);
 
@@ -71,7 +77,7 @@ function App() {
           <button className="hamburger-menu" onClick={toggleMenu}>
             ☰
           </button>
-          <h1 className="app-bar-title">THERAPROMPTS</h1>
+          <a href='/' className='app-bar-title-link'><h1 className="app-bar-title">THERAPROMPTS</h1></a>
           <nav className={`nav-bar ${menuOpen ? 'open' : ''}`}>
             {Object.keys(topics).map((topic, index) => (
               <a key={index} href={`/${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>

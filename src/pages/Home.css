@@ -1,23 +1,37 @@
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px 20px;
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.prompt-container {
-  min-height: 100vh;
+/* LandingPage.css */
+.landing-page-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   text-align: center;
 }
 
-.title {
+.landing-page-container h1 {
   font-size: 3em;
-  margin: 0 0 0.25em;
+  margin-bottom: 20px;
+}
+
+.topics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.topic-link {
+  display: block;
+  padding: 20px 40px;
+  text-decoration: none;
+  font-size: 1.5em;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  color: #777;
+}
+
+.topic-link:hover {
+  text-decoration: underline;
 }
 
 .subtitle {
@@ -26,50 +40,9 @@
   color: #777;
 }
 
-.small-subtitle {
-  font-size: 1em;
-  margin: 0;
-  color: #aaa; /* Even lighter color for the small subtitle */
-}
-
-.prompt-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.prompt-item {
-  background: #e5e5cc; /* #f0f0f0; */
-  padding: 10px;
-  border-radius: 5px;
-  text-align: left;
-}
-
-.prompt-index {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.prompt-text {
-  font-size: 1em;
-}
-
-.scroll-message {
-  position: absolute;
-  bottom: 16px;
-  padding: 10px;
-  text-align: center;
-  font-size: 0.9em;
-  color: #888;
-}
-
-.all-prompts-header {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  text-align: center; /* Center text */
-  width: 100%; /* Ensure it takes full width */
-  margin: 2em 0 0; /* Add some margin for spacing */
+.divider {
+  width: 80%;
+  margin: 20px auto;
+  border: 0;
+  border-top: 1px solid #ccc;
 }

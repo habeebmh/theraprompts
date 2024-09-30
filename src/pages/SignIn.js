@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signInWithPopup, getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import GoogleButton from 'react-google-button'
 
@@ -14,8 +14,9 @@ function SignIn() {
 
   const handleSignInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate('/');
+      await signInWithRedirect(auth, googleProvider).then(() => {
+        navigate('/account');
+      });
     } catch (err) {
       setError(err.message);
     }

@@ -102,3 +102,8 @@
     right: 0;
   }
 }
+
+.app-bar-title-link {
+  text-decoration: none;
+  color: #000;
+}
