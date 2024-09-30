@@ -11,7 +11,7 @@ function LandingPage() {
       <hr className="divider" />
       <div className="topics-container">
         {Object.keys(topics).map((topic, index) => (
-          <Link key={index} to={`/${topic.replace(/\s+/g, '-').toLowerCase()}`} className="topic-link">
+          <Link key={index} to={`/prompt/${topic.replace(/\s+/g, '-').toLowerCase()}`} className="topic-link">
             {topic}
           </Link>
         ))}
