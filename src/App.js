@@ -7,7 +7,7 @@ import EntryDetails from './pages/EntryDetails';
 import Learn from './pages/Learn';
 import CreateEntry from './pages/CreateEntry';
 import Home from './pages/Home';
-import Prompt from './pages/Prompts';
+import Prompts from './pages/prompt/Prompts';
 
 import { topics } from './prompts';
 import AuthProvider from './utils/providers/AuthProvider';
@@ -41,8 +41,8 @@ const router = createBrowserRouter([
     element: <EntryDetails />,
   },
   {
-    path: "/:topic",
-    element: <Prompt />,
+    path: "/prompt/:topic",
+    element: <Prompts />,
   },
 ]);
 
@@ -75,7 +75,7 @@ function App() {
           <a href='/' className='app-bar-title-link'><h1 className="app-bar-title">THERAPROMPTS</h1></a>
           <nav className={`nav-bar ${menuOpen ? 'open' : ''}`}>
             {Object.keys(topics).map((topic, index) => (
-              <a key={index} href={`/${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>
+              <a key={index} href={`/prompt/${topic.replace(/\s+/g, '-').toLowerCase()}`} className={`nav-link ${topic === currentTopic ? 'nav-link-bold' : ''}`}>
                 {topic}
               </a>
             ))}

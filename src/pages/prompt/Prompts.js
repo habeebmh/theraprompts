@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 
 
-import { dateSeed, seededRandomItem } from '../utils/random';
+import { dateSeed, seededRandomItem } from '../../utils/random';
 
 import './Prompts.css';
-import { topics } from '../prompts';
+import { topics } from '../../prompts';
 import { useParams } from 'react-router-dom';
 
 function stringToNumber(str) {
