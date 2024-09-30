@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Account from './pages/Account';
 import SignIn from './pages/SignIn';
 import EntryDetails from './pages/EntryDetails';
+import Study from './pages/Study';
 
 import { topics } from './prompts';
 import AuthProvider from './utils/providers/AuthProvider';
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/study",
-    element: <Account />,
+    element: <Study />,
   },
   {
     path: "/account/entry/:id",

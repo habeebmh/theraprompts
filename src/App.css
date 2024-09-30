@@ -67,6 +67,7 @@
   text-align: center; /* Center the text */
   margin-bottom: 20px; /* Add some margin at the top */
   color: #555; /* Darker color for the text */
+  margin-top: 8px;
 }
 
 @media (max-width: 950px) {
