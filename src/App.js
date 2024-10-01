@@ -56,7 +56,6 @@ const router = createBrowserRouter([
 function SignInButton() {
   const { authenticated, loading } = useAuthState();
   const auth = getAuth();
-  const accountsFlag = useFeatureFlag('accounts');
 
   function handleSignOut() {
     signOut(auth).then(() => {
@@ -64,7 +63,7 @@ function SignInButton() {
     });
   }
 
-  return (accountsFlag || loading) ? <></> : (
+  return (loading) ? <></> : (
     <>
       <a href={authenticated ? '/account' : '/sign-in'} className='nav-link'>
         {authenticated ? 'account' : 'sign in'}
@@ -83,6 +82,7 @@ function App() {
   const currentTopic = useMemo(() => {
     return Object.keys(topics).find(topic => window.location.pathname.includes(topic.replace(/\s+/g, '-').toLowerCase())) ?? '';
   }, []);
+  const accountsFlag = useFeatureFlag('accounts');
 
   return (
     <>
@@ -102,7 +102,7 @@ function App() {
               <a href='/learn' className='nav-link'>
                 learn
               </a>
-              <SignInButton />
+              {accountsFlag && <SignInButton />}
             </div>
           </nav>
         </header>
