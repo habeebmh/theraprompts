@@ -59,6 +59,7 @@ function Prompt() {
           {prompts.map((prompt, index) => (
             <div key={index} className="prompt-item">
               <span className="prompt-index">{prompt.topic} #{prompt.index}</span>
+              <br />
               <span className="prompt-text">{prompt.text}</span>
             </div>
           ))}
