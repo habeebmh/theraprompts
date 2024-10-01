@@ -1,14 +1,14 @@
-import { post } from '../api';
-import { useAPI } from './useAPI';
+import { post } from '../api'
+import { useAPI } from './useAPI'
 
 export const useEntries = (userId) => {
   const { data: entries = [], error, loading } = useAPI(async () => {
     if (!userId) {
-      return [];
+      return []
     }
-    const response = await post(process.env.REACT_APP_API_GET_JOURNAL_ENTRIES, { user: userId });
-        return response;
-  }, [userId]);
+    const response = await post(process.env.REACT_APP_API_GET_JOURNAL_ENTRIES, { user: userId })
+    return response
+  }, [userId])
 
-  return { entries, error, loading };
+  return { entries, error, loading }
 }

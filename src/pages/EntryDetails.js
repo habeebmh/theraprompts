@@ -1,20 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react'
+import { useParams } from 'react-router-dom'
 
-import { useAuthState } from '../utils/hooks/useAuthState';
-import { useEntry } from '../utils/hooks/useEntry';
-import { decode } from '../utils/encode';
+import { useAuthState } from '../utils/hooks/useAuthState'
+import { useEntry } from '../utils/hooks/useEntry'
+import { decode } from '../utils/encode'
 
-import './EntryDetails.css';
+import './EntryDetails.css'
 
-function EntryDetails() {
-  const { uid } = useAuthState();
-  const { id } = useParams();
-  const { entry, loading } = useEntry(uid, id);
+function EntryDetails () {
+  const { uid } = useAuthState()
+  const { id } = useParams()
+  const { entry, loading } = useEntry(uid, id)
 
-  
   if (!entry) {
-    return ;
+    return
   }
 
   return (
@@ -27,7 +26,7 @@ function EntryDetails() {
       <p><strong>Entry</strong></p>
       <p>{decode(entry.content)}</p>
     </div>
-  );
+  )
 }
 
-export default EntryDetails;
+export default EntryDetails

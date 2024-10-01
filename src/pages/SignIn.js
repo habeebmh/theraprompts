@@ -1,15 +1,15 @@
-import React, { useState, useCallback } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState, useCallback } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import { signIn } from '../utils/auth';
+import { signIn } from '../utils/auth'
 
-import './SignIn.css';
+import './SignIn.css'
 
-function SignIn() {    
-  const [error, setError] = useState('');
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const navigate = useNavigate();
+function SignIn () {
+  const [error, setError] = useState('')
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams({ successReset: 'false', redirectUrl: '' })
   const [loading, setLoading] = useState(false)
 
@@ -24,13 +24,13 @@ function SignIn() {
 
   const handleSignIn = async () => {
     try {
-      const user = await signIn(email, password)
+      await signIn(email, password)
       await handleRedirectAfterLogin()
     } catch (err) {
-      setError(err.message);
+      setError(err.message)
       setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="sign-in-center-container">
@@ -68,10 +68,10 @@ function SignIn() {
             <hr />
           </div>
         </form>
-        <a href='/sign-up' className='sign-up-link'>Don't have an account? Sign up here</a>
+        <a href='/sign-up' className='sign-up-link'>Don&apos;t have an account? Sign up here</a>
       </div>
     </div>
-  );
+  )
 }
 
-export default SignIn;
+export default SignIn

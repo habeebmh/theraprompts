@@ -1,7 +1,7 @@
-import React from 'react';
-import './Learn.css';
+import React from 'react'
+import './Learn.css'
 
-function Study() {
+function Study () {
   return (
     <div className="study-container">
       <h2>The Benefits of Journaling for Mental Health and Therapy</h2>
@@ -24,7 +24,7 @@ function Study() {
         <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505408/" target="_blank" rel="noopener noreferrer">Writing Therapy: How Journaling Can Improve Mental Health</a></li>
       </ul>
     </div>
-  );
+  )
 }
 
-export default Study;
+export default Study

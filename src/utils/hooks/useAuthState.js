@@ -14,7 +14,7 @@ export const useAuthState = () => {
     } else {
       return { authenticated: false, user: undefined, firebaseUser: null, loading }
     }
-}, [firebaseUser, loading])
+  }, [firebaseUser, loading])
 
   return authState
 }

@@ -1,36 +1,35 @@
-import { useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useMemo } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { topics } from '../../prompts';
-import { dateSeed, seededRandomItem } from '../../utils/random';
-import { useAuthState } from '../../utils/hooks/useAuthState';
-import { useFeatureFlag } from '../../utils/hooks/useFeatureFlag';
+import { topics } from '../../prompts'
+import { dateSeed, seededRandomItem } from '../../utils/random'
+import { useAuthState } from '../../utils/hooks/useAuthState'
+import { useFeatureFlag } from '../../utils/hooks/useFeatureFlag'
 
-import './Prompts.css';
+import './Prompts.css'
 
-
-function stringToNumber(str) {
-  return [...btoa(str)].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+function stringToNumber (str) {
+  return [...btoa(str)].reduce((acc, char) => acc + char.charCodeAt(0), 0)
 }
 
-function Prompt() {
-  const { authenticated, loading } = useAuthState();
-  const { topic = '' } = useParams();  
+function Prompt () {
+  const { authenticated, loading } = useAuthState()
+  const { topic = '' } = useParams()
   const currentTopic = useMemo(() => {
     const decodedTopic = topic.replace(/-/g, ' ')
-    return topics[decodedTopic] ? decodedTopic : Object.keys(topics)[0];
-  }, [topic]);
+    return topics[decodedTopic] ? decodedTopic : Object.keys(topics)[0]
+  }, [topic])
 
-  const prompts = useMemo(() => topics[currentTopic], [currentTopic]);
+  const prompts = useMemo(() => topics[currentTopic], [currentTopic])
 
-  const accountsFlag = useFeatureFlag('accounts');
+  const accountsFlag = useFeatureFlag('accounts')
 
   const selectedItem = useMemo(() => {
-    const seed = dateSeed() + stringToNumber(currentTopic);
-    return seededRandomItem(prompts, seed);
-  }, [currentTopic, prompts]);
+    const seed = dateSeed() + stringToNumber(currentTopic)
+    return seededRandomItem(prompts, seed)
+  }, [currentTopic, prompts])
 
-  const currentDate = useMemo(() => new Date().toLocaleDateString(), []);
+  const currentDate = useMemo(() => new Date().toLocaleDateString(), [])
 
   return (
     <>
@@ -66,7 +65,7 @@ function Prompt() {
         </div> */}
       </div>
     </>
-  );
+  )
 }
 
-export default Prompt;
+export default Prompt

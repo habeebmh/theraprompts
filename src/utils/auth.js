@@ -9,7 +9,7 @@ export async function signIn (email, password) {
 export async function signUpUser (email, password, firstName) {
   const auth = getAuth()
   const userCredential = await createUserWithEmailAndPassword(auth, email.toLowerCase().trim(), password)
-  const user = userCredential.user;
+  const user = userCredential.user
   await updateProfile(user, {
     displayName: firstName
   })

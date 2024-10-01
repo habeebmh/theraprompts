@@ -1,43 +1,43 @@
-import React, { useState, useMemo } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState, useMemo } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import { useAuthState } from '../utils/hooks/useAuthState';
-import { createEntry } from '../utils/hooks/useCreateEntry';
-import { encode } from '../utils/encode';
+import { useAuthState } from '../utils/hooks/useAuthState'
+import { createEntry } from '../utils/hooks/useCreateEntry'
+import { encode } from '../utils/encode'
 
-import './CreateEntry.css';
+import './CreateEntry.css'
 
-function CreateEntry() {
-  const [content, setContent] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const { uid } = useAuthState();
-  const [searchParams] = useSearchParams();
+function CreateEntry () {
+  const [content, setContent] = useState('')
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const { uid } = useAuthState()
+  const [searchParams] = useSearchParams()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const topic = useMemo(() => searchParams.get('topic'), [searchParams]);
-  const prompt = useMemo(() => searchParams.get('prompt'), [searchParams]);
-  const index = useMemo(() => searchParams.get('index'), [searchParams]);
+  const topic = useMemo(() => searchParams.get('topic'), [searchParams])
+  const prompt = useMemo(() => searchParams.get('prompt'), [searchParams])
+  const index = useMemo(() => searchParams.get('index'), [searchParams])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
+    e.preventDefault()
+    setError('')
+    setSuccess('')
 
     try {
       if (uid) {
-        await createEntry(uid, prompt, index, topic, encode(content));
-        setSuccess('Journal entry created successfully!');
-        setContent('');
-        navigate('/account');
+        await createEntry(uid, prompt, index, topic, encode(content))
+        setSuccess('Journal entry created successfully!')
+        setContent('')
+        navigate('/account')
       } else {
-        setError('You must be signed in to create a journal entry.');
+        setError('You must be signed in to create a journal entry.')
       }
     } catch (err) {
-      setError('Error creating journal entry: ' + err.message);
+      setError('Error creating journal entry: ' + err.message)
     }
-  };
+  }
 
   return (
     <div className="create-entry-container">
@@ -63,7 +63,7 @@ function CreateEntry() {
         </div>
       </form>
     </div>
-  );
+  )
 }
 
-export default CreateEntry;
+export default CreateEntry

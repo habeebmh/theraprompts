@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { signUpUser } from '../utils/auth';
+import { signUpUser } from '../utils/auth'
 
-import './SignUp.css';
+import './SignUp.css'
 
-function SignUp() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+function SignUp () {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
-    setError('');
+    e.preventDefault()
+    setError('')
 
     try {
       if (password !== confirmPassword) {
-        throw new Error("Passwords don't match");
+        throw new Error("Passwords don't match")
       }
-      await signUpUser(username.trim(), password, firstName.trim());
-      navigate('/account');
+      await signUpUser(username.trim(), password, firstName.trim())
+      navigate('/account')
     } catch (err) {
-      setError(err.message);
+      setError(err.message)
     }
-  };
+  }
 
   return (
     <div className="sign-up-center-container">
@@ -80,7 +80,7 @@ function SignUp() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default SignUp;
+export default SignUp

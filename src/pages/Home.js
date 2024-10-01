@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { topics } from '../prompts';
-import './Home.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { topics } from '../prompts'
+import './Home.css'
 
-function LandingPage() {
+function LandingPage () {
   return (
     <div className="landing-page-container">
       <h1>welcome to theraprompts</h1>
@@ -17,7 +17,7 @@ function LandingPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default LandingPage;
+export default LandingPage
