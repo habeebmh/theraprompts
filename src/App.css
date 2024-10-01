@@ -66,10 +66,11 @@
 }
 
 .app-bar-right-buttons {
-  position: absolute;
-  right: 1em;
+  position: relative;
   display: flex;
   gap: 1em;
+  padding-left: 1em;
+  border-left: 1px solid #ccc;
 }
 
 @media (max-width: 950px) {

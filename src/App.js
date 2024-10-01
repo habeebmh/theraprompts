@@ -103,6 +103,8 @@ function App () {
               <a href='/learn' className='nav-link'>
                 learn
               </a>
+            </div>
+            <div className='app-bar-right-buttons'>
               {accountsFlag && <SignInButton />}
             </div>
           </nav>
