@@ -51,9 +51,9 @@ const router = createBrowserRouter([
 ]);
 
 function SignInButton() {
-  const { authenticated } = useAuthState();
+  const { authenticated, loading } = useAuthState();
 
-  return (
+  return loading ? <></> : (
     <a href={authenticated ? '/account' : '/sign-in'} className='nav-link end'>
       {authenticated ? 'account' : 'sign in'}
     </a>
@@ -83,10 +83,12 @@ function App() {
                 {topic}
               </a>
             ))}
-            <a href='/learn' className='nav-link end'>
-              learn
-            </a>
-            {/* <SignInButton /> */}
+            <div className='app-bar-right-buttons'>
+              <a href='/learn' className='nav-link end'>
+                learn
+              </a>
+              <SignInButton />
+            </div>
           </nav>
         </header>
         <RouterProvider router={router} />

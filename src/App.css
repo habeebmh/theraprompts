@@ -49,11 +49,6 @@
   font-size: 1.2em;
 }
 
-.nav-link.end {
-  position: absolute;
-  right: 1em;
-}
-
 .nav-link-bold {
   font-weight: bold;
 }
@@ -68,6 +63,13 @@
   margin-bottom: 20px; /* Add some margin at the top */
   color: #555; /* Darker color for the text */
   margin-top: 8px;
+}
+
+.app-bar-right-buttons {
+  position: absolute;
+  right: 1em;
+  display: flex;
+  gap: 1em;
 }
 
 @media (max-width: 950px) {
@@ -97,9 +99,13 @@
     text-align: center;
   }
 
-  .nav-link.end {
+  .app-bar-right-buttons {
+    border-top: 1px solid #ccc;
     position: relative;
+    flex-direction: column;
     right: 0;
+    width: 100%;
+    padding-top: 1em;
   }
 }
 
