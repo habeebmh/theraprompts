@@ -17,6 +17,7 @@ import { signOut, getAuth } from 'firebase/auth';
 
 import './App.css';
 import { AuthGuard } from './components/AuthGuard';
+import { useFeatureFlag } from './utils/hooks/useFeatureFlag';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
 function SignInButton() {
   const { authenticated, loading } = useAuthState();
   const auth = getAuth();
+  const accountsFlag = useFeatureFlag('accounts');
 
   function handleSignOut() {
     signOut(auth).then(() => {
@@ -62,7 +64,7 @@ function SignInButton() {
     });
   }
 
-  return loading ? <></> : (
+  return (accountsFlag || loading) ? <></> : (
     <>
       <a href={authenticated ? '/account' : '/sign-in'} className='nav-link'>
         {authenticated ? 'account' : 'sign in'}
@@ -101,7 +103,6 @@ function App() {
                 learn
               </a>
               <SignInButton />
-              
             </div>
           </nav>
         </header>

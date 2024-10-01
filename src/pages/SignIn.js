@@ -25,7 +25,7 @@ function SignIn() {
   const handleSignIn = async () => {
     try {
       const user = await signIn(email, password)
-            await handleRedirectAfterLogin()
+      await handleRedirectAfterLogin()
     } catch (err) {
       setError(err.message);
       setLoading(false)

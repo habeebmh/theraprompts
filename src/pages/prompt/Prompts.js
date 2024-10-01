@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { topics } from '../../prompts';
 import { dateSeed, seededRandomItem } from '../../utils/random';
 import { useAuthState } from '../../utils/hooks/useAuthState';
+import { useFeatureFlag } from '../../utils/hooks/useFeatureFlag';
 
 import './Prompts.css';
 
@@ -13,7 +14,7 @@ function stringToNumber(str) {
 }
 
 function Prompt() {
-  const { authenticated } = useAuthState();
+  const { authenticated, loading } = useAuthState();
   const { topic = '' } = useParams();  
   const currentTopic = useMemo(() => {
     const decodedTopic = topic.replace(/-/g, ' ')
@@ -21,6 +22,8 @@ function Prompt() {
   }, [topic]);
 
   const prompts = useMemo(() => topics[currentTopic], [currentTopic]);
+
+  const accountsFlag = useFeatureFlag('accounts');
 
   const selectedItem = useMemo(() => {
     const seed = dateSeed() + stringToNumber(currentTopic);
@@ -38,13 +41,13 @@ function Prompt() {
             <h1 className="title">{selectedItem.text}</h1>
             <h3 className="small-subtitle">{selectedItem.topic} #{selectedItem.index}</h3>
           </article>
-          <div className='start-journaling-container'>
+          {(accountsFlag && !loading) && <div className='start-journaling-container'>
             {
               authenticated
                 ? <a className='link-light' href={`/create-entry?index=${selectedItem.index}&prompt=${encodeURIComponent(selectedItem.text)}&topic=${encodeURIComponent(selectedItem.topic)}`}>start journaling</a>
                 : <a className='link-light' href={`/sign-in?redirectUrl=${encodeURIComponent(`/create-entry?index=${selectedItem.index}&prompt=${encodeURIComponent(selectedItem.text)}&topic=${encodeURIComponent(selectedItem.topic)}`)}`}>sign in to start journaling</a>
             }
-          </div>
+          </div>}
           <div className="scroll-message">
             Scroll to see more prompts
           </div>
