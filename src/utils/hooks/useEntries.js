@@ -7,8 +7,7 @@ export const useEntries = (userId) => {
       return [];
     }
     const response = await post(process.env.REACT_APP_API_GET_JOURNAL_ENTRIES, { user: userId });
-    console.log('response', response);
-    return response;
+        return response;
   }, [userId]);
 
   return { entries, error, loading };

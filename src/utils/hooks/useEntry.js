@@ -3,8 +3,7 @@ import { post } from '../api';
 
 export const useEntry = (userId, entryId) => {
   const { data: entry, error, loading } = useAPI(async () => {
-    console.log('userId', userId);
-    if (!userId) {
+        if (!userId) {
       return undefined;
     }
     const response = await post(process.env.REACT_APP_API_GET_JOURNAL_ENTRY, { user: userId, entry: entryId });

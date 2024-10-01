@@ -9,8 +9,7 @@ function Account() {
   const { uid } = useAuthState();
   const { entries, loading } = useEntries(uid);
 
-  console.log('entries', entries);
-
+  
   return (
     <div className='account-center-container'>
       <div className="account-container">

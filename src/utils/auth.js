@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 
 export async function signIn (email, password) {
   const auth = getAuth()

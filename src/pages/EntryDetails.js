@@ -12,8 +12,7 @@ function EntryDetails() {
   const { id } = useParams();
   const { entry, loading } = useEntry(uid, id);
 
-  console.log('entry', entry);
-
+  
   if (!entry) {
     return ;
   }

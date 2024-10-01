@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 
 import Account from './pages/Account';
