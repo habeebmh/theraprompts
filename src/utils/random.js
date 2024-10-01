@@ -3,9 +3,11 @@ function seededRandom(seed) {
   return x - Math.floor(x);
 }
 
+
 export function dateSeed () {
   const date = new Date();
-  const seed = date.getFullYear() + (date.getMonth() + 1) + date.getDate();
+  const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  const seed = date.getFullYear() + dayOfYear;
   return seed;
 }
 

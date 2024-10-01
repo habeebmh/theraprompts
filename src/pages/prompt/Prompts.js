@@ -49,10 +49,10 @@ function Prompt() {
             }
           </div>}
           <div className="scroll-message">
-            Scroll to see more prompts
+            Come back tomorrow for another prompt!
           </div>
         </div>
-        <div className='all-prompts-header'>
+        {/* <div className='all-prompts-header'>
           <h2 className="subtitle">All {currentTopic !== 'prompt' && <span>{currentTopic}</span>} prompts</h2>
         </div>
         <div className="prompt-list">
@@ -63,7 +63,7 @@ function Prompt() {
               <span className="prompt-text">{prompt.text}</span>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </>
   );
