@@ -68,3 +68,9 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.caption {
+  font-size: 0.8em;
+  color: #777;
+  margin-top: 10px;
+}

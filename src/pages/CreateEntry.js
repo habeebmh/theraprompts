@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuthState } from '../utils/hooks/useAuthState';
 import { createEntry } from '../utils/hooks/useCreateEntry';
+import { encode } from '../utils/encode';
 
 import './CreateEntry.css';
 
@@ -26,7 +27,7 @@ function CreateEntry() {
 
     try {
       if (uid) {
-        await createEntry(uid, prompt, index, topic, content);
+        await createEntry(uid, prompt, index, topic, encode(content));
         setSuccess('Journal entry created successfully!');
         setContent('');
         navigate('/account');
@@ -53,6 +54,7 @@ function CreateEntry() {
             onChange={(e) => setContent(e.target.value)}
             required
           />
+          <span className='caption'>This entry will be encrypted before it leaves your computer.</span>
         </div>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}

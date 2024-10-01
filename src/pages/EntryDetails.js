@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { useAuthState } from '../utils/hooks/useAuthState';
 import { useEntry } from '../utils/hooks/useEntry';
+import { decode } from '../utils/encode';
 
 import './EntryDetails.css';
 
@@ -25,7 +26,7 @@ function EntryDetails() {
       <p><strong>Created</strong> {new Date(entry.createdTimestamp).toLocaleDateString()}</p>
       <p><strong>Last Updated</strong> {new Date(entry.updatedTimestamp).toLocaleDateString()}</p>
       <p><strong>Entry</strong></p>
-      <p>{entry.content}</p>
+      <p>{decode(entry.content)}</p>
     </div>
   );
 }
