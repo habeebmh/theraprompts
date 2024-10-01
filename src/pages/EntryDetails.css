@@ -1,11 +1,13 @@
 /* EntryDetail.css */
 .entry-detail-container {
-  max-width: 800px;
+  max-width: calc(100% - 2em);
+  width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2em;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 96px;
 }
 
 .entry-detail-container h2 {

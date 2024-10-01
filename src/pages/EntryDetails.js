@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+
+import { useAuthState } from '../utils/hooks/useAuthState';
+import { useEntry } from '../utils/hooks/useEntry';
+
 import './EntryDetails.css';
 
 function EntryDetails() {
+  const { uid } = useAuthState();
   const { id } = useParams();
-  const [entry, setEntry] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { entry, loading } = useEntry(uid, id);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  console.log('entry', entry);
 
   if (!entry) {
-    return <div>No entry found</div>;
+    return ;
   }
 
   return (
     <div className="entry-detail-container">
       <h2>Journal Entry</h2>
-      <p><strong>Prompt:</strong> {entry.prompt.text}</p>
-      <p><strong>Created Date:</strong> {new Date(entry.createdDate.seconds * 1000).toLocaleDateString()}</p>
-      <p><strong>Updated Date:</strong> {new Date(entry.updatedDate.seconds * 1000).toLocaleDateString()}</p>
-      <p><strong>Content:</strong> {entry.content}</p>
+      {!entry && !loading && <div>No entry found</div>}
+      <p><strong>{entry.topic} #{entry.index}</strong> {entry.promptText}</p>
+      <p><strong>Created</strong> {new Date(entry.createdTimestamp).toLocaleDateString()}</p>
+      <p><strong>Last Updated</strong> {new Date(entry.updatedTimestamp).toLocaleDateString()}</p>
+      <p><strong>Entry</strong></p>
+      <p>{entry.content}</p>
     </div>
   );
 }

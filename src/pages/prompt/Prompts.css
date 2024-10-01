@@ -73,3 +73,7 @@
   width: 100%; /* Ensure it takes full width */
   margin: 2em 0 0; /* Add some margin for spacing */
 }
+
+.start-journaling-container {
+  margin-top: 3em;;
+}

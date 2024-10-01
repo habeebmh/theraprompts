@@ -8,5 +8,5 @@ export async function post (url, body) {
     body: JSON.stringify(body)
   })
 
-  return (await response.json())?.result
+  return (await response.json());
 }

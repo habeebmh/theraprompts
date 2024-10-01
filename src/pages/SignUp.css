@@ -1,13 +1,14 @@
-.sign-in-center-container {
+/* SignUp.css */
+.sign-up-center-container {
   display: flex ;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.sign-in-container {
+.sign-up-container {
   width: 400px;
-  max-width: 100%;
+  max-width: 100%;;
   margin: 0 auto;
   padding: 2em;
   border: 1px solid #ccc;
@@ -15,35 +16,32 @@
   background-color: #fff;
 }
 
-.sign-in-container h2 {
-  text-align: center;
+.sign-up-container h2 {
+  margin-bottom: 20px;
 }
 
-.error {
-  color: red;
-  margin-top: 15px;
-  text-align: center;
-}
-
-.sign-in-form {
+.sign-up-form {
   width: calc(100% - 2em);
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
 }
 
-.sign-in-form-group {
-  width: 100%;
-  margin-bottom: 15px;
+.sign-up-form-group {
+  width: calc(100% - 2em);
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
   text-align: left;
 }
 
-.sign-in-form-group label {
+.sign-up-form-group label {
   display: block;
   margin-bottom: 5px;
+  align-self: flex-start;
 }
 
-.sign-in-form-group input {
+.sign-up-form-group input {
   width: calc(100% - 2em);
   padding: 1em;
   border: 1px solid #ccc;
@@ -55,8 +53,9 @@
   margin-top: 10px;
 }
 
-.sign-in-form-group button {
+.sign-up-form-group button {
   display: block;
+  width: 100%;
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -64,19 +63,9 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
+  margin-top: 1em;
 }
 
-.sign-in-form-group button:hover {
+.sign-up-form-group button:hover {
   background-color: #0056b3;
-}
-
-.sign-in-form-group button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.sign-up-link {
-  margin-top: 15px;
-  text-align: center;
-  color: #007bff;
 }

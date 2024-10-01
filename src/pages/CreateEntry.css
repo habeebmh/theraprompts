@@ -1,8 +1,9 @@
 /* CreateEntry.css */
 .create-entry-container {
-  max-width: 600px;
+  max-width: calc(100% - 2em);
+  width: 800px;
   margin: 96px auto 0;
-  padding: 20px;
+  padding: 1em;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -13,27 +14,28 @@
   margin-bottom: 20px;
 }
 
-.form-group {
+.create-entry-form-group {
   margin-bottom: 15px;
 }
 
-.form-group label {
+.create-entry-form-group label {
   display: block;
   margin-bottom: 5px;
 }
 
-.form-group p {
+.create-entry-form-group p {
   background-color: #f9f9f9;
   padding: 10px;
   border-radius: 5px;
 }
 
-.form-group textarea {
-  width: 100%;
+.create-entry-form-group textarea {
+  width: calc(100% - 2em);
   height: 150px;
-  padding: 10px;
+  padding: 1em;
   border: 1px solid #ccc;
   border-radius: 5px;
+  resize: none;
 }
 
 .error {
@@ -46,7 +48,7 @@
   margin-top: 10px;
 }
 
-.form-group button {
+.create-entry-form-group button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -58,6 +60,11 @@
   font-size: 1em;
 }
 
-.form-group button:hover {
+.create-entry-form-group button:hover {
   background-color: #0056b3;
+}
+
+.create-entry-form-group button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

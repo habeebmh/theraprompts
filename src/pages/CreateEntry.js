@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuthState } from '../utils/hooks/useAuthState';
+import { createEntry } from '../utils/hooks/useCreateEntry';
 
 import './CreateEntry.css';
 
 function CreateEntry() {
-  const [prompt, setPrompt] = useState('');
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const { uid } = useAuthState();
+  const [searchParams] = useSearchParams();
 
-  const { user } = useAuthState();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // Fetch a random prompt or set a default prompt
-    const fetchPrompt = async () => {
-      // Replace this with your logic to fetch a prompt
-      const randomPrompt = "What are you grateful for today?";
-      setPrompt(randomPrompt);
-    };
-
-    fetchPrompt();
-  }, []);
+  const topic = useMemo(() => searchParams.get('topic'), [searchParams]);
+  const prompt = useMemo(() => searchParams.get('prompt'), [searchParams]);
+  const index = useMemo(() => searchParams.get('index'), [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,9 +25,11 @@ function CreateEntry() {
     setSuccess('');
 
     try {
-      if (user) {
+      if (uid) {
+        await createEntry(uid, prompt, index, topic, content);
         setSuccess('Journal entry created successfully!');
         setContent('');
+        navigate('/account');
       } else {
         setError('You must be signed in to create a journal entry.');
       }
@@ -44,11 +42,11 @@ function CreateEntry() {
     <div className="create-entry-container">
       <h2>Create a Journal Entry</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Prompt:</label>
-          <p>{prompt}</p>
+        <div className="create-entry-form-group">
+          <label>Prompt</label>
+          <p><b>{topic} #{index}</b> {prompt}</p>
         </div>
-        <div className="form-group">
+        <div className="create-entry-form-group">
           <label>Entry:</label>
           <textarea
             value={content}
@@ -58,7 +56,9 @@ function CreateEntry() {
         </div>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
-        <button type="submit">Save</button>
+        <div className="create-entry-form-group">
+          <button type="submit">Save</button>
+        </div>
       </form>
     </div>
   );

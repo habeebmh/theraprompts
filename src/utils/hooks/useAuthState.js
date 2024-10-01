@@ -2,13 +2,12 @@ import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 
 export const useAuthState = () => {
-  const { firebaseUser, user, loading } = useContext(AuthContext)
+  const { firebaseUser, loading } = useContext(AuthContext)
 
   if (firebaseUser != null) {
     return {
       authenticated: firebaseUser !== null,
-      user,
-      firebaseUser,
+      uid: firebaseUser?.uid,
       loading
     }
   } else {

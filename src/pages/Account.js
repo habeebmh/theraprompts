@@ -6,36 +6,38 @@ import { useAuthState } from '../utils/hooks/useAuthState';
 import './Account.css';
 
 function Account() {
-  const { user } = useAuthState();
-  const { entries, loading } = useEntries(user?.id);
-    
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const { uid } = useAuthState();
+  const { entries, loading } = useEntries(uid);
+
+  console.log('entries', entries);
 
   return (
-    <div className="account-container">
-      <h2>Your Journal Entries</h2>
-      <table className="entries-table">
-        <thead>
-          <tr>
-            <th>Prompt</th>
-            <th>Created Date</th>
-            <th>Updated Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {(entries ?? []).map(entry => (
-            <tr key={entry.id}>
-              <td>
-                <a href={`/account/entry/${entry.id}`}>{entry.prompt.text}</a>
-              </td>
-              <td>{new Date(entry.createdDate.seconds * 1000).toLocaleDateString()}</td>
-              <td>{new Date(entry.updatedDate.seconds * 1000).toLocaleDateString()}</td>
+    <div className='account-center-container'>
+      <div className="account-container">
+        <h2>Your Journal Entries</h2>
+        <table className="entries-table">
+          <thead>
+            <tr>
+              <th>Prompt</th>
+              <th>Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {(entries ?? []).sort((a, b) => b.updatedTimestamp = a.updatedTimestamp).map((entry, index) => (
+              <tr key={entry.id}>
+                <td>
+                  <a href={`/account/entry/${entry.id}`}><b>{entry.topic} #{entry.index}</b></a>
+                </td>
+                <td>{new Date(entry.createdTimestamp).toLocaleDateString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {loading && <p>Loading...</p>}
+      </div>
+      {entries.length === 0 && !loading && <div className='no-entries-container'>
+        <h2 className='subtitle'>No journal entries yet, <a href='/'>start here to create a new one.</a></h2>
+      </div>}
     </div>
   );
 }

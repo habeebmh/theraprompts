@@ -1,8 +1,17 @@
 /* Account.css */
+
+.account-center-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .account-container {
-  max-width: 800px;
+  max-width: calc(100% - 2em);
+  width: 800px;
   margin: 96px auto;
-  padding: 20px;
+  padding: 1em;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -34,4 +43,13 @@
 
 .entries-table tr:hover {
   background-color: #f1f1f1;
+}
+
+.no-entries-container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.no-entries-container a {
+  color: #777;
 }

@@ -8,6 +8,7 @@ import Learn from './pages/Learn';
 import CreateEntry from './pages/CreateEntry';
 import Home from './pages/Home';
 import Prompts from './pages/prompt/Prompts';
+import SignUp from './pages/SignUp';
 
 import { topics } from './prompts';
 import AuthProvider from './utils/providers/AuthProvider';
@@ -23,6 +24,9 @@ const router = createBrowserRouter([
   {
     path: "/sign-in",
     element: <SignIn />,
+  },{
+    path: "/sign-up",
+    element: <SignUp />,
   },
   {
     path: "/create-entry",
