@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 
 import Account from './pages/Account';
@@ -13,8 +13,10 @@ import SignUp from './pages/SignUp';
 import { topics } from './prompts';
 import AuthProvider from './utils/providers/AuthProvider';
 import { useAuthState } from './utils/hooks/useAuthState';
+import { signOut, getAuth } from 'firebase/auth';
 
 import './App.css';
+import { AuthGuard } from './components/AuthGuard';
 
 const router = createBrowserRouter([
   {
@@ -30,11 +32,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/create-entry",
-    element: <CreateEntry />,
+    element: <AuthGuard><CreateEntry /></AuthGuard>,
   },
   {
     path: "/account",
-    element: <Account />,
+    element: <AuthGuard><Account /></AuthGuard>,
   },
   {
     path: "/learn",
@@ -42,7 +44,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/account/entry/:id",
-    element: <EntryDetails />,
+    element: <AuthGuard><EntryDetails /></AuthGuard>,
   },
   {
     path: "/prompt/:topic",
@@ -52,13 +54,24 @@ const router = createBrowserRouter([
 
 function SignInButton() {
   const { authenticated, loading } = useAuthState();
+  const auth = getAuth();
+
+  function handleSignOut() {
+    signOut(auth).then(() => {
+      window.location.href = '/';
+    });
+  }
 
   return loading ? <></> : (
-    <a href={authenticated ? '/account' : '/sign-in'} className='nav-link end'>
-      {authenticated ? 'account' : 'sign in'}
-    </a>
+    <>
+      <a href={authenticated ? '/account' : '/sign-in'} className='nav-link'>
+        {authenticated ? 'account' : 'sign in'}
+      </a>
+      {authenticated && <a href='/' onClick={handleSignOut} className='nav-link'>sign out</a>}
+    </>
   );
 }
+
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -84,10 +97,11 @@ function App() {
               </a>
             ))}
             <div className='app-bar-right-buttons'>
-              <a href='/learn' className='nav-link end'>
+              <a href='/learn' className='nav-link'>
                 learn
               </a>
               <SignInButton />
+              
             </div>
           </nav>
         </header>

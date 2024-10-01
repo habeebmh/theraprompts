@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import './SignIn.css';
 import { signIn } from '../utils/auth';
+
+import './SignIn.css';
 
 function SignIn() {    
   const [error, setError] = useState('');
@@ -23,7 +24,8 @@ function SignIn() {
 
   const handleSignIn = async () => {
     try {
-      await signIn(email.toLowerCase().trim(), password)
+      const user = await signIn(email, password)
+      console.log('user', user)
       await handleRedirectAfterLogin()
     } catch (err) {
       setError(err.message);
@@ -38,7 +40,7 @@ function SignIn() {
         <p>
           Welcome to Theraprompts! Sign in to save your responses and access them later.
         </p>
-        <form onSubmit={handleSignIn} className='sign-in-form'>
+        <form className='sign-in-form'>
           <div className="sign-in-form-group">
             <label htmlFor="email">Email:</label>
             <input
@@ -46,6 +48,8 @@ function SignIn() {
               id="email"
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoCapitalize='none'
+              autoComplete='username'
             />
           </div>
           <div className="sign-in-form-group">
@@ -56,11 +60,12 @@ function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength="6"
+              autoComplete='current-password'
             />
           </div>
           {error && <p className="error">{error}</p>}
           <div className="sign-in-form-group">
-            <button type="submit" disabled={loading}>Sign In</button>
+            <button type="button" onClick={handleSignIn} disabled={loading}>Sign In</button>
             <hr />
           </div>
         </form>

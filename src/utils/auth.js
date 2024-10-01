@@ -2,16 +2,16 @@ import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPas
 
 export async function signIn (email, password) {
   const auth = getAuth()
-  return await signInWithEmailAndPassword(auth, email, password)
+  const user = await signInWithEmailAndPassword(auth, email.toLowerCase().trim(), password)
+  return user.user
 }
 
 export async function signUpUser (email, password, firstName) {
   const auth = getAuth()
-  await signOut(auth)
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+  const userCredential = await createUserWithEmailAndPassword(auth, email.toLowerCase().trim(), password)
   const user = userCredential.user;
   await updateProfile(user, {
     displayName: firstName
   })
-  return user
+  return user.user
 }

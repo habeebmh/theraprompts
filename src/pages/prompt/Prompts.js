@@ -39,7 +39,11 @@ function Prompt() {
             <h3 className="small-subtitle">{selectedItem.topic} #{selectedItem.index}</h3>
           </article>
           <div className='start-journaling-container'>
-            <a className='link-light' href={`/create-entry?index=${selectedItem.index}&prompt=${encodeURI(selectedItem.text)}&topic=${encodeURI(selectedItem.topic)}`}>{!authenticated && 'sign-in to '}start journaling</a>
+            {
+              authenticated
+                ? <a className='link-light' href={`/create-entry?index=${selectedItem.index}&prompt=${encodeURI(selectedItem.text)}&topic=${encodeURI(selectedItem.topic)}`}>start journaling</a>
+                : <a className='link-light' href={`/sign-in?redirectUrl=${encodeURI(`/create-entry?index=${selectedItem.index}&prompt=${encodeURI(selectedItem.text)}&topic=${encodeURI(selectedItem.topic)}`)}`}>sign in to start journaling</a>
+            }
           </div>
           <div className="scroll-message">
             Scroll to see more prompts
