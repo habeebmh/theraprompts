@@ -41,8 +41,8 @@ function Prompt() {
           <div className='start-journaling-container'>
             {
               authenticated
-                ? <a className='link-light' href={`/create-entry?index=${selectedItem.index}&prompt=${encodeURI(selectedItem.text)}&topic=${encodeURI(selectedItem.topic)}`}>start journaling</a>
-                : <a className='link-light' href={`/sign-in?redirectUrl=${encodeURI(`/create-entry?index=${selectedItem.index}&prompt=${encodeURI(selectedItem.text)}&topic=${encodeURI(selectedItem.topic)}`)}`}>sign in to start journaling</a>
+                ? <a className='link-light' href={`/create-entry?index=${selectedItem.index}&prompt=${encodeURIComponent(selectedItem.text)}&topic=${encodeURIComponent(selectedItem.topic)}`}>start journaling</a>
+                : <a className='link-light' href={`/sign-in?redirectUrl=${encodeURIComponent(`/create-entry?index=${selectedItem.index}&prompt=${encodeURIComponent(selectedItem.text)}&topic=${encodeURIComponent(selectedItem.topic)}`)}`}>sign in to start journaling</a>
             }
           </div>
           <div className="scroll-message">
