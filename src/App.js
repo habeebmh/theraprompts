@@ -111,6 +111,7 @@ function App () {
         </header>
         <RouterProvider router={router} />
         <footer className="footer">
+          <a className='link-light' href='https://docs.google.com/forms/d/e/1FAIpQLSdzNHWxjVh-iP36khjKLR8oqDaalKZ6d6HWHL9eM8dFL3zE2g/viewform?usp=sf_link'}>Leave us feedback</a>
           Dedicated to my best friend ❤️
         </footer>
       </AuthProvider>
