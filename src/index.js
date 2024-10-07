@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { initializeApp } from 'firebase/app'
+import { getAnalytics } from 'firebase/analytics'
 
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -15,7 +16,8 @@ const firebaseConfig = {
   messagingSenderId: '942760493829',
   appId: '1:942760493829:web:138862621bcf6e76d26d6c'
 }
-initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
+getAnalytics(app)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
