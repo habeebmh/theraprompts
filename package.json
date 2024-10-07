@@ -20,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "np --no-tests && yarn deploy",
+    "tag-version": "np --no-tests",
+    "release": "yarn tag-version && yarn deploy",
     "deploy": "yarn build && firebase deploy --only hosting"
   },
   "eslintConfig": {
